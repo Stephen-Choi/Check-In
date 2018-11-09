@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+	<title>Register</title>
+	<link rel="stylesheet" type="text/css" href="style.css"></link>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-animate.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    // conig tokens taken out for security
+	  };
+	  firebase.initializeApp(config);
+	</script>
+	<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
+	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="services/authentication.js"></script>
+	<script type="text/javascript" src="controllers/registration.js"></script>
+	<script type="text/javascript" src="controllers/meetings.js"></script>
+	<script type="text/javascript" src="controllers/checkins.js"></script>
+</head>
+<body>
+	<header>
+		<nav class="cf" ng-include="'views/nav.html'"></nav>
+	</header>
+	<div class="page">
+		<div class="userinfo" ng-show="currentUser" ng-controller="RegistrationController">
+			<span class="useInfo">Hi {{currentUser.firstname}}</span>
+			<a href="#" ng-click="logout()">Logout</a>
+		</div>
+
+  		<main class="cf" ng-view>
+  			{{ message }}
+ 		</main>
+	</div>
+</body>
+</html>
